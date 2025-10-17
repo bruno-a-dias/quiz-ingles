@@ -1,157 +1,312 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Proficiency Assessment</title>
+    <meta name="description" content="Plataforma completa de aprendizado de inglês com flashcards progressivos e teste de proficiência">
+    <title>English Learning Hub - Aprenda Inglês de Forma Inteligente</title>
+    
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <!-- Welcome Screen -->
-    <div id="welcomeScreen" class="screen active">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6">
-                    <div class="welcome-card">
-                        <div class="text-center mb-4">
-                            <i class="fas fa-graduation-cap welcome-icon"></i>
-                            <h1 class="welcome-title">English Proficiency Assessment</h1>
-                            <p class="welcome-subtitle">Test your English language skills with our comprehensive 50-question assessment</p>
-                            <p>Teste suas habilidades no idioma inglês com essa avaliação de 50 perguntas, no final vamos conferir os resultados obtidos.<br>Boa Sorte!</p>
-                        </div>
-                        
-                        <div class="theme-toggle-container">
-                            <label class="theme-toggle">
-                                <input type="checkbox" id="themeToggle">
-                                <span class="slider">
-                                    <i class="fas fa-sun"></i>
-                                    <i class="fas fa-moon"></i>
-                                </span>
-                            </label>
-                            <span class="theme-label">Dark Mode</span>
-                        </div>
-                        
-                        <form id="nameForm" class="mb-4">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="userName" placeholder="Enter your full name" required>
-                                <label for="userName">Full Name (Required for Certificate)</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-lg w-100">
-                                <i class="fas fa-play me-2"></i>Start Assessment
-                            </button>
-                        </form>
-                        
-                        <div class="assessment-info">
-                            <h5>Assessment Details:</h5>
-                            <ul>
-                                <li><strong>50 Questions</strong> organized in 10 blocks</li>
-                                <li><strong>5 Questions per block</strong> with immediate feedback</li>
-                                <li><strong>No changes allowed</strong> during the test</li>
-                                <li><strong>Printable certificate</strong> upon completion</li>
-                                <li><strong>Proficiency levels:</strong> A1 (Beginner) to C2 (Advanced)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Quiz Screen -->
-    <div id="quizScreen" class="screen">
-        <div class="container">
-            <div class="quiz-header">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <h2>English Proficiency Test</h2>
-                        <p class="participant-name">Participant: <span id="displayName"></span></p>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="progress-info">
-                            <span id="blockProgress">Block 1 of 10</span>
-                            <div class="progress mt-2">
-                                <div class="progress-bar" id="progressBar" style="width: 0%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="questionContainer">
-                <!-- Questions will be loaded here -->
-            </div>
-            
-            <div class="quiz-navigation">
-                <button id="nextBlockBtn" class="btn btn-primary btn-lg" disabled>
-                    Next Block <i class="fas fa-arrow-right ms-2"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Results Screen -->
-    <div id="resultsScreen" class="screen">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-8">
-                    <div class="results-card">
-                        <div class="text-center mb-4">
-                            <i class="fas fa-trophy results-icon"></i>
-                            <h1>Assessment Complete!</h1>
-                            <h3 id="finalScore"></h3>
-                            <div id="proficiencyBadge" class="proficiency-badge mt-3"></div>
-                        </div>
-                        
-                        <div id="resultsDetails" class="results-details"></div>
-                        
-                        <div class="results-actions">
-                            <button id="viewCertificateBtn" class="btn btn-success btn-lg me-3">
-                                <i class="fas fa-certificate me-2"></i>View Certificate
-                            </button>
-                            <button id="printCertificateBtn" class="btn btn-outline-success btn-lg me-3">
-                                <i class="fas fa-print me-2"></i>Print Certificate
-                            </button>
-                            <button id="retakeTestBtn" class="btn btn-outline-primary btn-lg">
-                                <i class="fas fa-redo me-2"></i>Retake Test
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Certificate Modal -->
-    <div class="modal fade" id="certificateModal" tabindex="-1">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Certificate Preview</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body p-0">
-                    <div id="certificateContainer" class="certificate-container">
-                        <!-- Certificate content will be generated here -->
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="printCertificate()">
-                        <i class="fas fa-print me-2"></i>Print Certificate
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-book-half"></i>
+                    <span data-translate="site_title">English Learning Hub</span>
+                </a>
+                
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Theme Toggle -->
+                    <button class="btn btn-theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="bi bi-moon-stars-fill"></i>
                     </button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    
+                    <!-- Language Toggle -->
+                    <div class="language-toggle">
+                        <button class="btn btn-language active" data-lang="pt">
+                            🇧🇷 PT
+                        </button>
+                        <button class="btn btn-language" data-lang="en">
+                            🇺🇸 EN
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="hero-title" data-translate="hero_title">
+                            Aprenda Inglês de Forma Inteligente
+                        </h1>
+                        <p class="hero-subtitle" data-translate="hero_description">
+                            Plataforma completa com flashcards progressivos e teste de proficiência para acelerar seu aprendizado de inglês
+                        </p>
+                        <div class="hero-badges">
+                            <span class="badge">
+                                <i class="bi bi-trophy-fill"></i>
+                                <span data-translate="badge_progressive">Sistema Progressivo</span>
+                            </span>
+                            <span class="badge">
+                                <i class="bi bi-graph-up"></i>
+                                <span data-translate="badge_levels">6 Níveis</span>
+                            </span>
+                            <span class="badge">
+                                <i class="bi bi-award-fill"></i>
+                                <span data-translate="badge_certificate">Certificado</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-illustration">
+                        <div class="floating-card card-1">
+                            <i class="bi bi-book"></i>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="bi bi-lightbulb"></i>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <div class="hero-image-placeholder">
+                            <i class="bi bi-mortarboard-fill"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Print Certificate (Hidden) -->
-    <div id="printCertificate" class="print-only">
-        <!-- Certificate for printing will be generated here -->
-    </div>
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 data-translate="about_title">Sobre a Plataforma</h2>
+                <p class="section-subtitle" data-translate="about_description">
+                    Nossa plataforma oferece duas ferramentas poderosas para o aprendizado de inglês: flashcards com repetição espaçada e teste de proficiência abrangente
+                </p>
+            </div>
 
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h3 data-translate="feature_progressive_title">Aprendizado Progressivo</h3>
+                        <p data-translate="feature_progressive_desc">
+                            Sistema de níveis que se adapta ao seu conhecimento, do básico ao avançado
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="bi bi-brain"></i>
+                        </div>
+                        <h3 data-translate="feature_spaced_title">Repetição Espaçada</h3>
+                        <p data-translate="feature_spaced_desc">
+                            Algoritmo inteligente que otimiza a retenção de memória a longo prazo
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="bi bi-patch-check-fill"></i>
+                        </div>
+                        <h3 data-translate="feature_assessment_title">Avaliação Completa</h3>
+                        <p data-translate="feature_assessment_desc">
+                            Teste abrangente com certificado de proficiência imprimível
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Options Section -->
+    <section class="learning-options-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 data-translate="options_title">Escolha Sua Jornada de Aprendizado</h2>
+                <p class="section-subtitle" data-translate="options_description">
+                    Selecione a ferramenta que melhor se adequa aos seus objetivos de aprendizado
+                </p>
+            </div>
+
+            <div class="row mt-5 g-4">
+                <!-- Flashcards Card -->
+                <div class="col-lg-6">
+                    <div class="learning-card flashcards-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="bi bi-card-list"></i>
+                            </div>
+                            <h3 data-translate="flashcards_title">Flashcards Progressivos</h3>
+                        </div>
+                        <div class="card-body">
+                            <p data-translate="flashcards_description">
+                                Aprenda vocabulário e gramática através de um sistema progressivo de 6 níveis com repetição espaçada inteligente
+                            </p>
+                            <ul class="features-list">
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span data-translate="flashcards_feature_1">Repetição espaçada inteligente</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span data-translate="flashcards_feature_2">Progressão do básico ao avançado</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span data-translate="flashcards_feature_3">Sistema de gamificação</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span data-translate="flashcards_feature_4">Mais de 200 cartões</span>
+                                </li>
+                            </ul>
+                            <div class="card-stats">
+                                <div class="stat">
+                                    <strong>6</strong>
+                                    <span data-translate="stat_levels">Níveis</span>
+                                </div>
+                                <div class="stat">
+                                    <strong>200+</strong>
+                                    <span data-translate="stat_cards">Cartões</span>
+                                </div>
+                                <div class="stat">
+                                    <strong>A1-C2</strong>
+                                    <span data-translate="stat_cefr">CEFR</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="flashcards.html" class="btn btn-primary btn-lg w-100">
+                                <i class="bi bi-play-circle-fill"></i>
+                                <span data-translate="flashcards_button">Começar Aprendizado</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Card -->
+                <div class="col-lg-6">
+                    <div class="learning-card quiz-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="bi bi-clipboard-check"></i>
+                            </div>
+                            <h3 data-translate="quiz_title">Teste de Proficiência</h3>
+                        </div>
+                        <div class="card-body">
+                            <p data-translate="quiz_description">
+                                Avalie seu nível de inglês com 50 questões abrangentes e receba um certificado de proficiência imprimível
+                            </p>
+                            <ul class="features-list">
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span data-translate="quiz_feature_1">50 questões divididas em 10 blocos</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span data-translate="quiz_feature_2">Feedback imediato</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span data-translate="quiz_feature_3">Certificado imprimível</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span data-translate="quiz_feature_4">Avaliação completa A1-C2</span>
+                                </li>
+                            </ul>
+                            <div class="card-stats">
+                                <div class="stat">
+                                    <strong>50</strong>
+                                    <span data-translate="stat_questions">Questões</span>
+                                </div>
+                                <div class="stat">
+                                    <strong>10</strong>
+                                    <span data-translate="stat_blocks">Blocos</span>
+                                </div>
+                                <div class="stat">
+                                    <strong>PDF</strong>
+                                    <span data-translate="stat_certificate">Certificado</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="quiz.html" class="btn btn-primary btn-lg w-100">
+                                <i class="bi bi-pencil-square"></i>
+                                <span data-translate="quiz_button">Fazer Teste</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 data-translate="footer_about">Sobre o English Learning Hub</h4>
+                    <p data-translate="footer_description">
+                        Plataforma completa de aprendizado de inglês com metodologia cientificamente comprovada para acelerar sua fluência
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h4 data-translate="footer_links">Links Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html" data-translate="footer_home">Início</a></li>
+                        <li><a href="flashcards.html" data-translate="footer_flashcards">Flashcards</a></li>
+                        <li><a href="quiz.html" data-translate="footer_quiz">Teste</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4 data-translate="footer_contact">Contato</h4>
+                    <p>
+                        <i class="bi bi-envelope"></i>
+                        contato@englishhub.com
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 English Learning Hub. <span data-translate="footer_rights">Todos os direitos reservados.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="app.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/language.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

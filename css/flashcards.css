@@ -1,0 +1,504 @@
+/* ===================================
+   FLASHCARDS STYLESHEET
+   =================================== */
+
+/* Dashboard View */
+.flashcards-main {
+    min-height: calc(100vh - 200px);
+    padding: var(--spacing-md) 0 var(--spacing-xl);
+}
+
+/* Statistics Cards */
+.stat-card {
+    background-color: var(--card-background);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    transition: all var(--transition-base);
+    margin-bottom: var(--spacing-md);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stat-icon i {
+    font-size: 1.75rem;
+    color: white;
+}
+
+.stat-info h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.stat-info p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Levels Grid */
+.levels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+/* Level Card */
+.level-card {
+    background-color: var(--card-background);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.level-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.level-card.locked {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.level-card.locked:hover {
+    transform: none;
+}
+
+.level-badge {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.level-badge i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.level-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.level-content p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.level-progress {
+    margin-bottom: var(--spacing-md);
+}
+
+.level-progress .progress {
+    height: 10px;
+    background-color: var(--border-color);
+    border-radius: var(--radius-sm);
+}
+
+.level-progress .progress-bar {
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: var(--radius-sm);
+    transition: width var(--transition-slow);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+}
+
+.level-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-top: 1px solid var(--border-color);
+    margin-top: var(--spacing-sm);
+}
+
+.level-info span {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.level-status {
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.level-card.unlocked .level-status {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.level-card.locked .level-status {
+    background-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+.unlock-requirement {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    background-color: var(--background-color);
+    border-radius: var(--radius-sm);
+    margin-top: var(--spacing-md);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.unlock-requirement i {
+    color: var(--warning-color);
+}
+
+.btn-start-level {
+    width: 100%;
+    margin-top: var(--spacing-md);
+}
+
+.level-card.locked .btn-start-level {
+    display: none;
+}
+
+/* Study View */
+.study-view {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.study-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.study-progress-info h4 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.study-progress-info p {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.study-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.btn-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-color);
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    font-size: 1.25rem;
+    transition: all var(--transition-fast);
+}
+
+.btn-icon:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Session Progress Bar */
+#sessionProgress {
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    transition: width var(--transition-slow);
+}
+
+/* Flashcard Container */
+.flashcard-container {
+    perspective: 1000px;
+    margin: var(--spacing-xl) 0;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flashcard {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    cursor: pointer;
+    transition: transform var(--transition-slow);
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+}
+
+.flashcard-front {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+}
+
+.flashcard-back {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    transform: rotateY(180deg);
+    border: 3px solid var(--primary-color);
+}
+
+.card-content {
+    width: 100%;
+}
+
+.card-label {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    margin-bottom: var(--spacing-sm);
+}
+
+.flashcard-front .card-label {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.flashcard-back .card-label {
+    color: var(--text-secondary);
+}
+
+#cardFront,
+#cardBack {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: var(--spacing-lg) 0;
+    word-wrap: break-word;
+}
+
+.flashcard-front #cardFront {
+    color: white;
+}
+
+.flashcard-back #cardBack {
+    color: var(--text-color);
+}
+
+.card-example {
+    font-size: 1.125rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-top: var(--spacing-md);
+}
+
+.card-phonetic {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-family: monospace;
+    margin-top: var(--spacing-sm);
+}
+
+.tap-hint {
+    font-size: 0.875rem;
+    opacity: 0.7;
+    margin-top: var(--spacing-lg);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Study Actions */
+.study-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-top: var(--spacing-xl);
+}
+
+.btn-need-practice,
+.btn-got-it {
+    flex: 1;
+    max-width: 300px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+}
+
+.btn-need-practice {
+    background-color: var(--error-color);
+    color: white;
+    border: none;
+}
+
+.btn-need-practice:hover {
+    background-color: #DC2626;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-got-it {
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+}
+
+.btn-got-it:hover {
+    background-color: #059669;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Session Complete Modal */
+.celebration-icon {
+    font-size: 5rem;
+    color: var(--warning-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.session-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
+    border-top: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.session-stats .stat-item {
+    text-align: center;
+}
+
+.session-stats .stat-item strong {
+    display: block;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.session-stats .stat-item span {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .levels-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .study-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .flashcard {
+        height: 350px;
+    }
+    
+    #cardFront,
+    #cardBack {
+        font-size: 2rem;
+    }
+    
+    .study-actions {
+        flex-direction: column;
+    }
+    
+    .btn-need-practice,
+    .btn-got-it {
+        max-width: 100%;
+    }
+    
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .flashcard {
+        height: 300px;
+    }
+    
+    #cardFront,
+    #cardBack {
+        font-size: 1.5rem;
+    }
+    
+    .card-example {
+        font-size: 1rem;
+    }
+}

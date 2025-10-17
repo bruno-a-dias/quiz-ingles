@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Teste de proficiência em inglês com certificado">
+    <title>Teste de Proficiência - English Learning Hub</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/print.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header no-print">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-arrow-left-circle"></i>
+                    <span data-translate="back_home">Voltar ao Início</span>
+                </a>
+                
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Theme Toggle -->
+                    <button class="btn btn-theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="bi bi-moon-stars-fill"></i>
+                    </button>
+                    
+                    <!-- Language Toggle -->
+                    <div class="language-toggle">
+                        <button class="btn btn-language active" data-lang="pt">
+                            🇧🇷 PT
+                        </button>
+                        <button class="btn btn-language" data-lang="en">
+                            🇺🇸 EN
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="quiz-main">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mt-3 no-print">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html" data-translate="home">Início</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" data-translate="quiz">Teste de Proficiência</li>
+                </ol>
+            </nav>
+
+            <!-- Welcome Screen -->
+            <div id="welcomeScreen" class="welcome-screen">
+                <div class="text-center mb-5">
+                    <div class="welcome-icon">
+                        <i class="bi bi-clipboard-check"></i>
+                    </div>
+                    <h1 data-translate="quiz_welcome_title">Teste de Proficiência em Inglês</h1>
+                    <p class="lead" data-translate="quiz_welcome_subtitle">
+                        Avalie seu nível de inglês com 50 questões abrangentes
+                    </p>
+                </div>
+
+                <div class="row mb-5">
+                    <div class="col-md-4">
+                        <div class="info-card">
+                            <i class="bi bi-list-check"></i>
+                            <h3>50</h3>
+                            <p data-translate="info_questions">Questões</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-card">
+                            <i class="bi bi-grid-3x3-gap"></i>
+                            <h3>10</h3>
+                            <p data-translate="info_blocks">Blocos</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-card">
+                            <i class="bi bi-award"></i>
+                            <h3><i class="bi bi-check-circle"></i></h3>
+                            <p data-translate="info_certificate">Certificado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-instructions">
+                    <h3 data-translate="instructions_title">Instruções</h3>
+                    <ul>
+                        <li data-translate="instruction_1">O teste contém 50 questões divididas em 10 blocos de 5 questões cada</li>
+                        <li data-translate="instruction_2">Você responde 5 questões por vez e recebe feedback imediato ao enviar</li>
+                        <li data-translate="instruction_3">Após responder todas as questões de um bloco, clique em "Enviar Respostas"</li>
+                        <li data-translate="instruction_4">Ao final, você receberá um certificado com seu nível de proficiência</li>
+                        <li data-translate="instruction_5">O teste avalia níveis de A1 (Iniciante) a C2 (Avançado)</li>
+                    </ul>
+                </div>
+
+                <div class="text-center mt-5">
+                    <button class="btn btn-primary btn-lg" id="showNameModal">
+                        <i class="bi bi-play-circle"></i>
+                        <span data-translate="start_quiz">Começar Teste</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Screen -->
+            <div id="quizScreen" class="quiz-screen" style="display: none;">
+                <!-- Progress -->
+                <div class="quiz-progress">
+                    <div class="progress-info">
+                        <span>
+                            <span data-translate="block">Bloco</span> 
+                            <strong id="currentBlock">1</strong> / <span id="totalBlocks">10</span>
+                        </span>
+                        <span>
+                            <span data-translate="questions">Questões</span> 
+                            <strong id="currentQuestion">1-5</strong> / <span id="totalQuestions">50</span>
+                        </span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" id="quizProgress" role="progressbar" 
+                             style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+                <!-- Question Container - 5 questions per block -->
+                <div id="questionContainer" class="question-container-block">
+                    <!-- Questions will be inserted here by JavaScript -->
+                </div>
+
+                <!-- Block Actions -->
+                <div class="question-actions">
+                    <button class="btn btn-primary btn-lg" id="submitBlockBtn">
+                        <span data-translate="submit_block">Enviar Respostas</span>
+                        <i class="bi bi-check-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="resultsScreen" class="results-screen" style="display: none;">
+                <div class="results-content">
+                    <!-- Celebration Header -->
+                    <div class="celebration-header text-center">
+                        <div class="celebration-icon">
+                            <i class="bi bi-trophy-fill"></i>
+                        </div>
+                        <h1 data-translate="congrats">Parabéns!</h1>
+                        <p class="lead" data-translate="test_complete">
+                            Você completou o teste de proficiência em inglês
+                        </p>
+                    </div>
+
+                    <!-- Results Summary -->
+                    <div class="results-summary">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="result-card">
+                                    <div class="result-icon">
+                                        <i class="bi bi-percent"></i>
+                                    </div>
+                                    <h3 id="finalScore">0%</h3>
+                                    <p data-translate="score">Pontuação</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="result-card">
+                                    <div class="result-icon">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                    </div>
+                                    <h3 id="correctAnswers">0/50</h3>
+                                    <p data-translate="correct">Corretas</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="result-card">
+                                    <div class="result-icon">
+                                        <i class="bi bi-award-fill"></i>
+                                    </div>
+                                    <h3 id="proficiencyLevel">A1</h3>
+                                    <p data-translate="level">Nível</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Level Description -->
+                    <div class="level-description" id="levelDescription">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Certificate -->
+                    <div class="certificate-container">
+                        <div class="certificate">
+                            <div class="certificate-border">
+                                <div class="certificate-header">
+                                    <div class="certificate-logo">
+                                        <i class="bi bi-award-fill"></i>
+                                    </div>
+                                    <h2 data-translate="cert_title">Certificate of English Language Proficiency</h2>
+                                    <div class="certificate-subtitle">
+                                        <p data-translate="cert_institution">English Proficiency Assessment Center</p>
+                                    </div>
+                                </div>
+
+                                <div class="certificate-body">
+                                    <p class="cert-text" data-translate="cert_intro">This is to certify that</p>
+                                    <h1 class="cert-name" id="certName">Student Name</h1>
+                                    <p class="cert-text">
+                                        <span data-translate="cert_body">has successfully completed the English Proficiency Assessment on</span>
+                                        <strong class="cert-date" id="certDate">October 17, 2025</strong>
+                                    </p>
+                                    
+                                    <!-- Level and Score side by side -->
+                                    <div class="cert-results-row">
+                                        <div class="cert-level-badge">
+                                            <h2 id="certLevel">B2</h2>
+                                            <p id="certLevelName" data-translate="cert_achievement">Intermediate Level</p>
+                                        </div>
+                                        <div class="cert-score">
+                                            <p data-translate="cert_score_label">Score:</p>
+                                            <h3 id="certScore">85%</h3>
+                                            <p id="certCorrect">(42 de 50 questões corretas)</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="certificate-footer">
+                                    <div class="cert-seal">
+                                        <i class="bi bi-patch-check-fill"></i>
+                                    </div>
+                                    <div class="cert-signature">
+                                        <div class="signature-line"></div>
+                                        <p data-translate="cert_director">Assessment Director</p>
+                                        <p><strong>English Learning Hub</strong></p>
+                                    </div>
+                                    <div class="cert-number">
+                                        <p data-translate="cert_number_label">Certificate No.</p>
+                                        <p><strong id="certNumber">ELH-2025-001</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results Actions -->
+                    <div class="results-actions no-print">
+                        <button class="btn btn-outline-primary btn-lg" id="retakeQuiz">
+                            <i class="bi bi-arrow-clockwise"></i>
+                            <span data-translate="retake_quiz">Refazer Teste</span>
+                        </button>
+                        <button class="btn btn-primary btn-lg" id="printCertificate">
+                            <i class="bi bi-printer"></i>
+                            <span data-translate="print_certificate">Imprimir Certificado</span>
+                        </button>
+                        <a href="index.html" class="btn btn-secondary btn-lg">
+                            <i class="bi bi-house"></i>
+                            <span data-translate="back_home">Voltar ao Início</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Name Modal -->
+            <div class="modal fade" id="nameModal" tabindex="-1" aria-labelledby="nameModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="nameModalLabel" data-translate="enter_name">Insira seu Nome</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p data-translate="name_required">Por favor, insira seu nome completo para gerar o certificado:</p>
+                            <div class="mb-3">
+                                <label for="studentName" class="form-label" data-translate="full_name">Nome Completo</label>
+                                <input type="text" class="form-control" id="studentName" 
+                                       placeholder="Digite seu nome completo" required>
+                                <div class="invalid-feedback" data-translate="name_error">
+                                    Por favor, insira um nome válido
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-translate="cancel">
+                                Cancelar
+                            </button>
+                            <button type="button" class="btn btn-primary" id="startQuizBtn" data-translate="start">
+                                Iniciar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS - ORDEM IMPORTANTE -->
+    <script src="js/main.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>

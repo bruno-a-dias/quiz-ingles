@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flashcards progressivos de inglês com sistema de repetição espaçada">
+    <title>Flashcards Progressivos - English Learning Hub</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/flashcards.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-arrow-left-circle"></i>
+                    <span data-translate="back_home">Voltar ao Início</span>
+                </a>
+                
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Theme Toggle -->
+                    <button class="btn btn-theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="bi bi-moon-stars-fill"></i>
+                    </button>
+                    
+                    <!-- Language Toggle -->
+                    <div class="language-toggle">
+                        <button class="btn btn-language active" data-lang="pt">
+                            🇧🇷 PT
+                        </button>
+                        <button class="btn btn-language" data-lang="en">
+                            🇺🇸 EN
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flashcards-main">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mt-3">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html" data-translate="home">Início</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" data-translate="flashcards">Flashcards</li>
+                </ol>
+            </nav>
+
+            <!-- Dashboard View -->
+            <div id="dashboardView" class="dashboard-view">
+                <div class="text-center mb-4">
+                    <h1 data-translate="flashcards_title">Flashcards Progressivos</h1>
+                    <p class="lead" data-translate="flashcards_subtitle">
+                        Aprenda inglês de forma progressiva, do básico ao avançado
+                    </p>
+                </div>
+
+                <!-- Progress Overview -->
+                <div class="row mb-4">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="bi bi-calendar-check"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="studyStreak">0</h3>
+                                <p data-translate="stat_streak">Dias seguidos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="bi bi-check-circle-fill"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="totalMastered">0</h3>
+                                <p data-translate="stat_mastered">Cartões dominados</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="bi bi-trophy-fill"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="currentLevel">1</h3>
+                                <p data-translate="stat_level">Nível atual</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="bi bi-percent"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="overallProgress">0%</h3>
+                                <p data-translate="stat_progress">Progresso geral</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Levels Grid -->
+                <div class="levels-grid">
+                    <!-- Level 1 -->
+                    <div class="level-card unlocked" data-level="1">
+                        <div class="level-badge">
+                            <i class="bi bi-1-circle-fill"></i>
+                        </div>
+                        <div class="level-content">
+                            <h3 data-translate="level_1_title">Palavras Básicas (A1)</h3>
+                            <p data-translate="level_1_desc">Vocabulário essencial do dia a dia</p>
+                            <div class="level-progress">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 0%" 
+                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                            </div>
+                            <div class="level-info">
+                                <span><i class="bi bi-card-list"></i> 35 <span data-translate="cards">cartões</span></span>
+                                <span class="level-status" data-translate="status_unlocked">Desbloqueado</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-start-level" data-level="1" data-translate="btn_start">Começar</button>
+                    </div>
+
+                    <!-- Level 2 -->
+                    <div class="level-card locked" data-level="2">
+                        <div class="level-badge">
+                            <i class="bi bi-2-circle-fill"></i>
+                        </div>
+                        <div class="level-content">
+                            <h3 data-translate="level_2_title">Gramática Básica (A1-A2)</h3>
+                            <p data-translate="level_2_desc">Regras gramaticais simples</p>
+                            <div class="level-progress">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 0%" 
+                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                            </div>
+                            <div class="level-info">
+                                <span><i class="bi bi-card-list"></i> 30 <span data-translate="cards">cartões</span></span>
+                                <span class="level-status" data-translate="status_locked">Bloqueado</span>
+                            </div>
+                            <div class="unlock-requirement">
+                                <i class="bi bi-lock-fill"></i>
+                                <span data-translate="unlock_requirement">Domine 80% do Nível 1 para desbloquear</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-start-level" data-level="2" data-translate="btn_start">Começar</button>
+                    </div>
+
+                    <!-- Level 3 -->
+                    <div class="level-card locked" data-level="3">
+                        <div class="level-badge">
+                            <i class="bi bi-3-circle-fill"></i>
+                        </div>
+                        <div class="level-content">
+                            <h3 data-translate="level_3_title">Vida Cotidiana (A2)</h3>
+                            <p data-translate="level_3_desc">Situações do dia a dia</p>
+                            <div class="level-progress">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 0%" 
+                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                            </div>
+                            <div class="level-info">
+                                <span><i class="bi bi-card-list"></i> 40 <span data-translate="cards">cartões</span></span>
+                                <span class="level-status" data-translate="status_locked">Bloqueado</span>
+                            </div>
+                            <div class="unlock-requirement">
+                                <i class="bi bi-lock-fill"></i>
+                                <span data-translate="unlock_requirement_2">Domine 80% do Nível 2 para desbloquear</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-start-level" data-level="3" data-translate="btn_start">Começar</button>
+                    </div>
+
+                    <!-- Level 4 -->
+                    <div class="level-card locked" data-level="4">
+                        <div class="level-badge">
+                            <i class="bi bi-4-circle-fill"></i>
+                        </div>
+                        <div class="level-content">
+                            <h3 data-translate="level_4_title">Gramática Intermediária (B1)</h3>
+                            <p data-translate="level_4_desc">Estruturas gramaticais complexas</p>
+                            <div class="level-progress">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 0%" 
+                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                            </div>
+                            <div class="level-info">
+                                <span><i class="bi bi-card-list"></i> 0 <span data-translate="cards">cartões</span></span>
+                                <span class="level-status" data-translate="status_locked">Bloqueado</span>
+                            </div>
+                            <div class="unlock-requirement">
+                                <i class="bi bi-lock-fill"></i>
+                                <span data-translate="unlock_requirement_3">Domine 80% do Nível 3 para desbloquear</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-start-level" data-level="4" data-translate="btn_start">Começar</button>
+                    </div>
+
+                    <!-- Level 5 -->
+                    <div class="level-card locked" data-level="5">
+                        <div class="level-badge">
+                            <i class="bi bi-5-circle-fill"></i>
+                        </div>
+                        <div class="level-content">
+                            <h3 data-translate="level_5_title">Vocabulário Avançado (B1-B2)</h3>
+                            <p data-translate="level_5_desc">Palavras acadêmicas e profissionais</p>
+                            <div class="level-progress">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 0%" 
+                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                            </div>
+                            <div class="level-info">
+                                <span><i class="bi bi-card-list"></i> 0 <span data-translate="cards">cartões</span></span>
+                                <span class="level-status" data-translate="status_locked">Bloqueado</span>
+                            </div>
+                            <div class="unlock-requirement">
+                                <i class="bi bi-lock-fill"></i>
+                                <span data-translate="unlock_requirement_4">Domine 80% do Nível 4 para desbloquear</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-start-level" data-level="5" data-translate="btn_start">Começar</button>
+                    </div>
+
+                    <!-- Level 6 -->
+                    <div class="level-card locked" data-level="6">
+                        <div class="level-badge">
+                            <i class="bi bi-6-circle-fill"></i>
+                        </div>
+                        <div class="level-content">
+                            <h3 data-translate="level_6_title">Construtor de Fluência (B2+)</h3>
+                            <p data-translate="level_6_desc">Expressões complexas e idiomas</p>
+                            <div class="level-progress">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 0%" 
+                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                            </div>
+                            <div class="level-info">
+                                <span><i class="bi bi-card-list"></i> 0 <span data-translate="cards">cartões</span></span>
+                                <span class="level-status" data-translate="status_locked">Bloqueado</span>
+                            </div>
+                            <div class="unlock-requirement">
+                                <i class="bi bi-lock-fill"></i>
+                                <span data-translate="unlock_requirement_5">Domine 80% do Nível 5 para desbloquear</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-start-level" data-level="6" data-translate="btn_start">Começar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Study View -->
+            <div id="studyView" class="study-view" style="display: none;">
+                <div class="study-header">
+                    <button class="btn btn-outline-primary" id="backToDashboard">
+                        <i class="bi bi-arrow-left"></i>
+                        <span data-translate="back_dashboard">Voltar ao Painel</span>
+                    </button>
+                    <div class="study-progress-info">
+                        <h4 id="levelTitle"></h4>
+                        <p id="cardCounter"></p>
+                    </div>
+                    <div class="study-controls">
+                        <button class="btn btn-icon" id="volumeBtn" title="Pronunciar">
+                            <i class="bi bi-volume-up-fill"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="progress mb-4">
+                    <div class="progress-bar" id="sessionProgress" role="progressbar" 
+                         style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <div class="flashcard-container">
+                    <div class="flashcard" id="flashcard">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <div class="card-content">
+                                    <p class="card-label" data-translate="front_label">Frente</p>
+                                    <h2 id="cardFront"></h2>
+                                    <p class="tap-hint" data-translate="tap_flip">Toque para virar</p>
+                                </div>
+                            </div>
+                            <div class="flashcard-back">
+                                <div class="card-content">
+                                    <p class="card-label" data-translate="back_label">Verso</p>
+                                    <h2 id="cardBack"></h2>
+                                    <p class="card-example" id="cardExample"></p>
+                                    <p class="card-phonetic" id="cardPhonetic"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="study-actions">
+                    <button class="btn btn-lg btn-need-practice" id="needPracticeBtn">
+                        <i class="bi bi-x-circle-fill"></i>
+                        <span data-translate="need_practice">Preciso Praticar</span>
+                    </button>
+                    <button class="btn btn-lg btn-got-it" id="gotItBtn">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span data-translate="got_it">Aprendi</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Session Complete Modal -->
+            <div class="modal fade" id="sessionCompleteModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" data-translate="session_complete">Sessão Concluída!</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="celebration-icon">
+                                <i class="bi bi-trophy-fill"></i>
+                            </div>
+                            <h3 data-translate="great_job">Ótimo trabalho!</h3>
+                            <div class="session-stats">
+                                <div class="stat-item">
+                                    <strong id="cardsStudied">0</strong>
+                                    <span data-translate="cards_studied">Cartões estudados</span>
+                                </div>
+                                <div class="stat-item">
+                                    <strong id="accuracyRate">0%</strong>
+                                    <span data-translate="accuracy">Taxa de acerto</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-translate="back_dashboard">
+                                Voltar ao Painel
+                            </button>
+                            <button type="button" class="btn btn-primary" id="continueStudying" data-translate="continue">
+                                Continuar Estudando
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS - ORDEM IMPORTANTE -->
+    <script src="js/main.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/flashcards.js"></script>
+</body>
+</html>
