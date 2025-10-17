@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Proficiency Assessment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen" class="screen active">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="welcome-card">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-graduation-cap welcome-icon"></i>
+                            <h1 class="welcome-title">English Proficiency Assessment</h1>
+                            <p class="welcome-subtitle">Test your English language skills with our comprehensive 50-question assessment</p>
+                            <p>Teste suas habilidades no idioma inglês com essa avaliação de 50 perguntas, no final vamos conferir os resultados obtidos.<br>Boa Sorte!</p>
+                        </div>
+                        
+                        <div class="theme-toggle-container">
+                            <label class="theme-toggle">
+                                <input type="checkbox" id="themeToggle">
+                                <span class="slider">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </span>
+                            </label>
+                            <span class="theme-label">Dark Mode</span>
+                        </div>
+                        
+                        <form id="nameForm" class="mb-4">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="userName" placeholder="Enter your full name" required>
+                                <label for="userName">Full Name (Required for Certificate)</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-play me-2"></i>Start Assessment
+                            </button>
+                        </form>
+                        
+                        <div class="assessment-info">
+                            <h5>Assessment Details:</h5>
+                            <ul>
+                                <li><strong>50 Questions</strong> organized in 10 blocks</li>
+                                <li><strong>5 Questions per block</strong> with immediate feedback</li>
+                                <li><strong>No changes allowed</strong> during the test</li>
+                                <li><strong>Printable certificate</strong> upon completion</li>
+                                <li><strong>Proficiency levels:</strong> A1 (Beginner) to C2 (Advanced)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quizScreen" class="screen">
+        <div class="container">
+            <div class="quiz-header">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h2>English Proficiency Test</h2>
+                        <p class="participant-name">Participant: <span id="displayName"></span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="progress-info">
+                            <span id="blockProgress">Block 1 of 10</span>
+                            <div class="progress mt-2">
+                                <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="questionContainer">
+                <!-- Questions will be loaded here -->
+            </div>
+            
+            <div class="quiz-navigation">
+                <button id="nextBlockBtn" class="btn btn-primary btn-lg" disabled>
+                    Next Block <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="resultsScreen" class="screen">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <div class="results-card">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-trophy results-icon"></i>
+                            <h1>Assessment Complete!</h1>
+                            <h3 id="finalScore"></h3>
+                            <div id="proficiencyBadge" class="proficiency-badge mt-3"></div>
+                        </div>
+                        
+                        <div id="resultsDetails" class="results-details"></div>
+                        
+                        <div class="results-actions">
+                            <button id="viewCertificateBtn" class="btn btn-success btn-lg me-3">
+                                <i class="fas fa-certificate me-2"></i>View Certificate
+                            </button>
+                            <button id="printCertificateBtn" class="btn btn-outline-success btn-lg me-3">
+                                <i class="fas fa-print me-2"></i>Print Certificate
+                            </button>
+                            <button id="retakeTestBtn" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-redo me-2"></i>Retake Test
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certificate Modal -->
+    <div class="modal fade" id="certificateModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Certificate Preview</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div id="certificateContainer" class="certificate-container">
+                        <!-- Certificate content will be generated here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="printCertificate()">
+                        <i class="fas fa-print me-2"></i>Print Certificate
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Print Certificate (Hidden) -->
+    <div id="printCertificate" class="print-only">
+        <!-- Certificate for printing will be generated here -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
