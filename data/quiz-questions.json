@@ -1,0 +1,455 @@
+{
+    "questions": [
+      {
+        "id": 1,
+        "block": 1,
+        "level": "A1",
+        "question": "I ___ a student.",
+        "options": ["am", "is", "are", "be"],
+        "correct": 0,
+        "explanation": "Use 'am' with 'I'. Correct: I am a student."
+      },
+      {
+        "id": 2,
+        "block": 1,
+        "level": "A1",
+        "question": "She ___ to school every day.",
+        "options": ["go", "goes", "going", "gone"],
+        "correct": 1,
+        "explanation": "Third person singular (he/she/it) uses 'goes'. Correct: She goes to school."
+      },
+      {
+        "id": 3,
+        "block": 1,
+        "level": "A1",
+        "question": "They ___ watching TV now.",
+        "options": ["is", "am", "are", "be"],
+        "correct": 2,
+        "explanation": "Use 'are' with 'they'. Correct: They are watching TV."
+      },
+      {
+        "id": 4,
+        "block": 1,
+        "level": "A1",
+        "question": "I have ___ apple.",
+        "options": ["a", "an", "the", "some"],
+        "correct": 1,
+        "explanation": "Use 'an' before words starting with vowel sounds. Correct: I have an apple."
+      },
+      {
+        "id": 5,
+        "block": 1,
+        "level": "A1",
+        "question": "___ is your name?",
+        "options": ["Who", "What", "Where", "When"],
+        "correct": 1,
+        "explanation": "Use 'What' to ask about names. Correct: What is your name?"
+      },
+      {
+        "id": 6,
+        "block": 2,
+        "level": "A1",
+        "question": "He ___ English every day.",
+        "options": ["study", "studies", "studying", "studied"],
+        "correct": 1,
+        "explanation": "Present Simple with third person singular adds 's' or 'es'. Correct: He studies."
+      },
+      {
+        "id": 7,
+        "block": 2,
+        "level": "A1",
+        "question": "We ___ in the park right now.",
+        "options": ["walk", "walks", "are walking", "walked"],
+        "correct": 2,
+        "explanation": "Present Continuous (am/is/are + verb-ing) for actions happening now. Correct: We are walking."
+      },
+      {
+        "id": 8,
+        "block": 2,
+        "level": "A1",
+        "question": "She ___ coffee in the morning.",
+        "options": ["drink", "drinks", "drinking", "drank"],
+        "correct": 1,
+        "explanation": "Present Simple with 'she' requires 's'. Correct: She drinks coffee."
+      },
+      {
+        "id": 9,
+        "block": 2,
+        "level": "A2",
+        "question": "I ___ my homework at the moment.",
+        "options": ["do", "does", "am doing", "did"],
+        "correct": 2,
+        "explanation": "Use Present Continuous for actions happening now. Correct: I am doing."
+      },
+      {
+        "id": 10,
+        "block": 2,
+        "level": "A1",
+        "question": "They ___ football every weekend.",
+        "options": ["play", "plays", "playing", "played"],
+        "correct": 0,
+        "explanation": "Present Simple with 'they' uses base form. Correct: They play."
+      },
+      {
+        "id": 11,
+        "block": 3,
+        "level": "A2",
+        "question": "I ___ to the cinema yesterday.",
+        "options": ["go", "goes", "went", "going"],
+        "correct": 2,
+        "explanation": "Past Simple of 'go' is 'went'. Correct: I went yesterday."
+      },
+      {
+        "id": 12,
+        "block": 3,
+        "level": "A2",
+        "question": "She ___ her homework last night.",
+        "options": ["finish", "finished", "finishing", "finishes"],
+        "correct": 1,
+        "explanation": "Past Simple: add '-ed' to regular verbs. Correct: She finished."
+      },
+      {
+        "id": 13,
+        "block": 3,
+        "level": "A2",
+        "question": "We ___ at the beach last summer.",
+        "options": ["are", "were", "was", "be"],
+        "correct": 1,
+        "explanation": "Past of 'are' is 'were'. Correct: We were at the beach."
+      },
+      {
+        "id": 14,
+        "block": 3,
+        "level": "A2",
+        "question": "He ___ a book when I called.",
+        "options": ["read", "reads", "was reading", "reading"],
+        "correct": 2,
+        "explanation": "Past Continuous for ongoing past actions. Correct: He was reading."
+      },
+      {
+        "id": 15,
+        "block": 3,
+        "level": "A2",
+        "question": "They ___ the test last week.",
+        "options": ["take", "takes", "took", "taken"],
+        "correct": 2,
+        "explanation": "Past Simple of 'take' is 'took'. Correct: They took the test."
+      },
+      {
+        "id": 16,
+        "block": 4,
+        "level": "A2",
+        "question": "I ___ visit my grandmother tomorrow.",
+        "options": ["will", "am", "do", "have"],
+        "correct": 0,
+        "explanation": "Use 'will' for future actions. Correct: I will visit."
+      },
+      {
+        "id": 17,
+        "block": 4,
+        "level": "A2",
+        "question": "She ___ going to travel next month.",
+        "options": ["will", "is", "are", "am"],
+        "correct": 1,
+        "explanation": "Use 'is going to' with 'she'. Correct: She is going to travel."
+      },
+      {
+        "id": 18,
+        "block": 4,
+        "level": "A2",
+        "question": "We ___ start the meeting at 3 PM.",
+        "options": ["will", "are", "is", "do"],
+        "correct": 0,
+        "explanation": "Use 'will' for future plans. Correct: We will start."
+      },
+      {
+        "id": 19,
+        "block": 4,
+        "level": "A2",
+        "question": "They ___ going to buy a new car.",
+        "options": ["is", "am", "are", "will"],
+        "correct": 2,
+        "explanation": "Use 'are going to' with 'they'. Correct: They are going to buy."
+      },
+      {
+        "id": 20,
+        "block": 4,
+        "level": "A2",
+        "question": "It ___ rain tomorrow.",
+        "options": ["will", "is", "are", "do"],
+        "correct": 0,
+        "explanation": "Use 'will' for predictions. Correct: It will rain."
+      },
+      {
+        "id": 21,
+        "block": 5,
+        "level": "A2",
+        "question": "The book is ___ the table.",
+        "options": ["in", "on", "at", "by"],
+        "correct": 1,
+        "explanation": "Use 'on' for surfaces. Correct: The book is on the table."
+      },
+      {
+        "id": 22,
+        "block": 5,
+        "level": "A2",
+        "question": "I live ___ Brazil.",
+        "options": ["on", "at", "in", "by"],
+        "correct": 2,
+        "explanation": "Use 'in' for countries. Correct: I live in Brazil."
+      },
+      {
+        "id": 23,
+        "block": 5,
+        "level": "A2",
+        "question": "We meet ___ 5 o'clock.",
+        "options": ["in", "on", "at", "by"],
+        "correct": 2,
+        "explanation": "Use 'at' for specific times. Correct: We meet at 5 o'clock."
+      },
+      {
+        "id": 24,
+        "block": 5,
+        "level": "A2",
+        "question": "She goes to work ___ bus.",
+        "options": ["by", "in", "on", "with"],
+        "correct": 0,
+        "explanation": "Use 'by' for transportation. Correct: She goes by bus."
+      },
+      {
+        "id": 25,
+        "block": 5,
+        "level": "A2",
+        "question": "The cat is ___ the box.",
+        "options": ["in", "on", "at", "by"],
+        "correct": 0,
+        "explanation": "Use 'in' for enclosed spaces. Correct: The cat is in the box."
+      },
+      {
+        "id": 26,
+        "block": 6,
+        "level": "B1",
+        "question": "You ___ study for the exam.",
+        "options": ["must", "can", "may", "might"],
+        "correct": 0,
+        "explanation": "Use 'must' for strong obligation. Correct: You must study."
+      },
+      {
+        "id": 27,
+        "block": 6,
+        "level": "B1",
+        "question": "I ___ swim very well.",
+        "options": ["must", "should", "can", "may"],
+        "correct": 2,
+        "explanation": "Use 'can' for ability. Correct: I can swim."
+      },
+      {
+        "id": 28,
+        "block": 6,
+        "level": "B1",
+        "question": "You ___ see a doctor if you're sick.",
+        "options": ["can", "should", "may", "must"],
+        "correct": 1,
+        "explanation": "Use 'should' for advice. Correct: You should see a doctor."
+      },
+      {
+        "id": 29,
+        "block": 6,
+        "level": "B1",
+        "question": "___ I use your phone?",
+        "options": ["Must", "Should", "May", "Will"],
+        "correct": 2,
+        "explanation": "Use 'May' for polite permission. Correct: May I use your phone?"
+      },
+      {
+        "id": 30,
+        "block": 6,
+        "level": "B1",
+        "question": "It ___ rain later.",
+        "options": ["must", "should", "can", "might"],
+        "correct": 3,
+        "explanation": "Use 'might' for possibility. Correct: It might rain."
+      },
+      {
+        "id": 31,
+        "block": 7,
+        "level": "B1",
+        "question": "___ do you live?",
+        "options": ["What", "Where", "When", "Who"],
+        "correct": 1,
+        "explanation": "Use 'Where' for location questions. Correct: Where do you live?"
+      },
+      {
+        "id": 32,
+        "block": 7,
+        "level": "B1",
+        "question": "___ is your birthday?",
+        "options": ["What", "Where", "When", "How"],
+        "correct": 2,
+        "explanation": "Use 'When' for time questions. Correct: When is your birthday?"
+      },
+      {
+        "id": 33,
+        "block": 7,
+        "level": "B1",
+        "question": "___ are you feeling today?",
+        "options": ["What", "Where", "When", "How"],
+        "correct": 3,
+        "explanation": "Use 'How' to ask about feelings. Correct: How are you feeling?"
+      },
+      {
+        "id": 34,
+        "block": 7,
+        "level": "B1",
+        "question": "___ is that man?",
+        "options": ["What", "Where", "When", "Who"],
+        "correct": 3,
+        "explanation": "Use 'Who' for people questions. Correct: Who is that man?"
+      },
+      {
+        "id": 35,
+        "block": 7,
+        "level": "B1",
+        "question": "___ do you go to school?",
+        "options": ["What", "Why", "When", "How"],
+        "correct": 3,
+        "explanation": "Use 'How' to ask about method. Correct: How do you go to school?"
+      },
+      {
+        "id": 36,
+        "block": 8,
+        "level": "B1",
+        "question": "She is ___ than her sister.",
+        "options": ["tall", "taller", "tallest", "more tall"],
+        "correct": 1,
+        "explanation": "Use comparative form 'taller' with 'than'. Correct: She is taller."
+      },
+      {
+        "id": 37,
+        "block": 8,
+        "level": "B1",
+        "question": "This is the ___ book I've ever read.",
+        "options": ["good", "better", "best", "more good"],
+        "correct": 2,
+        "explanation": "Use superlative 'best' for the highest degree. Correct: the best book."
+      },
+      {
+        "id": 38,
+        "block": 8,
+        "level": "B1",
+        "question": "My car is ___ expensive than yours.",
+        "options": ["more", "most", "much", "many"],
+        "correct": 0,
+        "explanation": "Use 'more' with long adjectives. Correct: more expensive than."
+      },
+      {
+        "id": 39,
+        "block": 8,
+        "level": "B1",
+        "question": "He runs ___ than me.",
+        "options": ["fast", "faster", "fastest", "more fast"],
+        "correct": 1,
+        "explanation": "Comparative of 'fast' is 'faster'. Correct: He runs faster."
+      },
+      {
+        "id": 40,
+        "block": 8,
+        "level": "B1",
+        "question": "This is the ___ difficult exercise.",
+        "options": ["more", "most", "much", "many"],
+        "correct": 1,
+        "explanation": "Use superlative 'most' with long adjectives. Correct: the most difficult."
+      },
+      {
+        "id": 41,
+        "block": 9,
+        "level": "B2",
+        "question": "If it rains, I ___ stay home.",
+        "options": ["will", "would", "can", "should"],
+        "correct": 0,
+        "explanation": "First Conditional: If + present, will + verb. Correct: I will stay."
+      },
+      {
+        "id": 42,
+        "block": 9,
+        "level": "B2",
+        "question": "If I ___ rich, I would travel the world.",
+        "options": ["am", "was", "were", "be"],
+        "correct": 2,
+        "explanation": "Second Conditional uses 'were' for all persons. Correct: If I were rich."
+      },
+      {
+        "id": 43,
+        "block": 9,
+        "level": "B2",
+        "question": "She will call you if she ___ time.",
+        "options": ["have", "has", "had", "having"],
+        "correct": 1,
+        "explanation": "First Conditional: if-clause uses present tense. Correct: if she has."
+      },
+      {
+        "id": 44,
+        "block": 9,
+        "level": "B2",
+        "question": "If I had studied, I ___ passed the exam.",
+        "options": ["will", "would", "would have", "had"],
+        "correct": 2,
+        "explanation": "Third Conditional: would have + past participle. Correct: would have passed."
+      },
+      {
+        "id": 45,
+        "block": 9,
+        "level": "B2",
+        "question": "If you heat water to 100°C, it ___.",
+        "options": ["boil", "boils", "will boil", "would boil"],
+        "correct": 1,
+        "explanation": "Zero Conditional for facts uses present simple. Correct: it boils."
+      },
+      {
+        "id": 46,
+        "block": 10,
+        "level": "B2",
+        "question": "The letter ___ by John yesterday.",
+        "options": ["wrote", "was written", "is written", "writing"],
+        "correct": 1,
+        "explanation": "Passive voice in past: was/were + past participle. Correct: was written."
+      },
+      {
+        "id": 47,
+        "block": 10,
+        "level": "B2",
+        "question": "I have ___ finished my homework.",
+        "options": ["yet", "already", "still", "just"],
+        "correct": 3,
+        "explanation": "Use 'just' for recently completed actions. Correct: have just finished."
+      },
+      {
+        "id": 48,
+        "block": 10,
+        "level": "B2",
+        "question": "She said she ___ tired.",
+        "options": ["is", "was", "were", "be"],
+        "correct": 1,
+        "explanation": "Reported speech: change present to past. Correct: she was tired."
+      },
+      {
+        "id": 49,
+        "block": 10,
+        "level": "C1",
+        "question": "Hotel rooms must be ___ by noon.",
+        "options": ["evacuated", "leave", "abandoned", "vacated"],
+        "correct": 3,
+        "explanation": "Use 'vacated' to leave a room/property. Correct: must be vacated."
+      },
+      {
+        "id": 50,
+        "block": 10,
+        "level": "C1",
+        "question": "I need to finish this ___ Friday.",
+        "options": ["during", "at", "until", "by"],
+        "correct": 3,
+        "explanation": "Use 'by' for deadlines. Correct: finish by Friday."
+      }
+    ]
+  }
+  
